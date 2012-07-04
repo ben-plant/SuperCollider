@@ -19,10 +19,8 @@ namespace SylvesterCordello
 
         StreamReader streamReader;
         StringBuilder stringBuilder;
-
-        public List<Building> buildingsInMap = new List<Building>();
+        FileParser fileParser;
         
-
         public Building[,] masterMapArray;
 
         public bool debugMap = false;
@@ -32,43 +30,11 @@ namespace SylvesterCordello
         {
             this.debugTexture = debugTex;
             Debug.WriteLine("Mapping engine engaged...");
-
         }
 
-        public bool generateMap()
+        public void generateMap()
         {
-            Debug.WriteLine("Map generation initiated...");
-            streamReader = new StreamReader("City01.TXT");
-            stringBuilder = new StringBuilder();
-
-            while (currentMapX != mapSizeX)
-            {
-                string line = streamReader.ReadToEnd();
-
-                foreach (char digit in line)
-                {
-                    if (char.IsNumber(digit))
-                    {
-                        stringBuilder.Append(digit);
-                    }
-                    else if (char.IsSeparator(digit))
-                    {
-                        string tempStr = stringBuilder.ToString();
-                        masterMapArray[currentMapX, currentMapY] = Convert.ToInt32(tempStr);
-                        stringBuilder.Remove(0, stringBuilder.Length);
-                        ++currentMapY;
-                    }
-                    else if (char.IsLetter(digit))
-                    {
-                        stringBuilder.Remove(0, stringBuilder.Length);
-                        currentMapY = 0;
-                        currentMapX++;
-                    }
-                }
-            }
-
-            streamReader.Close();
-            return true;
+            fileParser = new FileParser("NULL", "NULL");
         }
 
         public void printMap()
