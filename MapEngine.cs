@@ -1,4 +1,5 @@
 using SuperCollider;
+using SuperCollider.GlobalDictionaries;
 
 using System;
 using System.Collections.Generic;
@@ -28,13 +29,10 @@ namespace SuperCollider
         FileParser fileParser;
         TextureLoader texLoader;
         
-        public Building[,] masterMapArray;
-        public Dictionary<int, Texture2D> masterTileCatalogue;
-        
+        public Building[,] masterMapArray;        
 
         public bool debugMap = false;
         private Texture2D debugTexture;
-
 
         public MapEngine(ContentManager Content)
         {
@@ -42,8 +40,8 @@ namespace SuperCollider
 
             texLoader = new TextureLoader(Content);
             Debug.WriteLine("Texture engine engaged...");
-            masterItemCatalogue = texLoader.loadItemsIntoMemory("Items");
-            masterTileCatalogue = texLoader.loadTilesIntoMemory("Tiles");
+            GlobalDictionaries.masterItemCatalogue = texLoader.loadItemsIntoMemory("Items");
+            GlobalDictionaries.masterTileCatalogue = texLoader.loadTilesIntoMemory("Tiles");
             
             Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Mapping engine engaged...");
         }
@@ -123,12 +121,6 @@ namespace SuperCollider
             return thisMap;
         }
 
-        public Dictionary<int, Texture2D> masterItemCatalogue
-        {
-            get
-            {
-                return masterItemCatalogue;
-            }
-        }
+
     }
 }

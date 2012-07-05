@@ -58,8 +58,10 @@ namespace SuperCollider
 
         public Item(Vector2 itemPlacement, int itemID)
         {
-            this.itemIndex = itemID;
+            GlobalDictionaries.itemsOnMap++;
 
+            this.itemIndex = itemID;
+            this.itemTexture = GlobalDictionaries.masterItemCatalogue[itemID];
         }
 
         public void Draw(SpriteBatch spriteBatch, Rectangle tileDrawPosition)
