@@ -1,20 +1,16 @@
-using SuperCollider;
+/**************************************************
+ * SuperCollider Game Engine 2012                 *
+ *                                                *
+ * Written by Benjamin Plant for private use only *
+ * Restricted build: not for production use!      *
+ **************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Text;
+using SuperCollider.CityComponents;
+
 using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
-namespace SuperCollider
+namespace SuperCollider.Engines
 {
     public class MapEngine
     {
@@ -25,6 +21,8 @@ namespace SuperCollider
 
         public MapEngine(ContentManager Content, string cityName)
         {
+            Debug.WriteLine("SuperCollider Game Engine - (C) Benjamin Plant 2012" + "\n" + "SuperCollider online...");
+
             GlobalDictionaries.texLoader = new TextureEngine(Content);
             Debug.WriteLine("Texture engine engaged...");
             GlobalDictionaries.masterItemCatalogue = GlobalDictionaries.texLoader.loadItemsIntoMemory("Items");

@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Diagnostics;
 
-namespace SuperCollider
+namespace SuperCollider.Engines
 {
     public class FileParsingEngine
     {
@@ -14,12 +14,13 @@ namespace SuperCollider
         private int currentMapHeight;
         private int currentScanningY;
         private int currentScanningX;
+        private Vector2 
         private int[,] currentMapArray;
 
         public FileParsingEngine(string extension, string filename)
         {
             Debug.WriteLine("Map generation initiated...");
-            this.parseFile(generateFilePath(extension, filename));
+
         }
 
         public string generateFilePath(string extension, string filename)
@@ -27,10 +28,11 @@ namespace SuperCollider
             return (stringBuilder.Append(extension + "//" + filename)).ToString();
         }
 
-        public int[,] parseFile(string filename)
+        public int[,] parseFile(string extension, string filename)
         {
-            streamReader = new StreamReader(filename);
-            Debug.WriteLine("Loaded {0} into memory and scanning..." + filename);
+            string file = stringBuilder.Append(extension + "//" + filename).ToString();
+            streamReader = new StreamReader(file);
+            Debug.WriteLine("Loaded {0} into memory and scanning..." + file);
 
             int linesInFile = 0;
             string line = streamReader.ReadToEnd();

@@ -17,14 +17,26 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
-namespace SuperCollider.CityComponents
+namespace SuperCollider.Engines
 {
-    public class City
+    class RenderingEngine
     {
-        public void generateCity(string filename)
+        SpriteBatch spriteBatch;
+
+        public RenderingEngine(SpriteBatch sBatch)
         {
-            fileParser = new FileParsingEngine("Cities", filename);
+        }
+
+        public void RenderCity()
+        {
+        }
+
+        public void RenderArray()
+        {
+        }
+
+        public void RenderList()
+        {
         }
     }
 }

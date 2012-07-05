@@ -1,4 +1,7 @@
 ﻿using SuperCollider;
+using SuperCollider.Engines;
+using SuperCollider.Objects;
+using SuperCollider.CityComponents;
 
 using System;
 using System.Collections.Generic;
@@ -14,7 +17,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace SuperCollider
+namespace SuperCollider.Engines
 {
     public class TextureEngine
     {

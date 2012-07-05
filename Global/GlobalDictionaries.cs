@@ -1,4 +1,7 @@
 ﻿using SuperCollider;
+using SuperCollider.Engines;
+using SuperCollider.Objects;
+using SuperCollider.CityComponents;
 
 using System;
 using System.Collections.Generic;
@@ -22,6 +25,7 @@ namespace SuperCollider
 
         public static FileParsingEngine fileParser;
         public static TextureEngine texLoader;
+        public static RenderingEngine renderEngine;
 
         public static bool debugGameEngine = true;
         public static int itemsOnMap = 0;

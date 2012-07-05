@@ -1,4 +1,9 @@
-﻿using System;
+﻿using SuperCollider;
+using SuperCollider.Engines;
+using SuperCollider.Objects;
+using SuperCollider.CityComponents;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -13,7 +18,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using SuperCollider;
 
-namespace SuperCollider
+namespace SuperCollider.CityComponents
 {
     public class Building
     {
