@@ -19,6 +19,7 @@ namespace SuperCollider
     public static class GlobalDictionaries
     {
         public static int itemsOnMap = 0;
+        public static Building[,] masterCityMap;
 
         public static Dictionary<int, Texture2D> masterItemCatalogue
         {

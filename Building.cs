@@ -38,7 +38,7 @@ namespace SuperCollider
 
         public bool debugMap = false;
 
-        public Building(int mapID, int X, int Y, Dictionary<int, Texture2D> tileCatalogue, Dictionary<int, Texture2D> itemCatalogue, Texture2D debugTex)
+        public Building(int mapID, int X, int Y)
         {
             this.masterMapID = mapID;
             this.mapSizeX = X;

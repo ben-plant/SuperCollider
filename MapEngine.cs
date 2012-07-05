@@ -34,7 +34,7 @@ namespace SuperCollider
         public bool debugMap = false;
         private Texture2D debugTexture;
 
-        public MapEngine(ContentManager Content)
+        public MapEngine(ContentManager Content, string cityName)
         {
             this.debugTexture = Content.Load<Texture2D>("debugTex");
 
@@ -43,12 +43,14 @@ namespace SuperCollider
             GlobalDictionaries.masterItemCatalogue = texLoader.loadItemsIntoMemory("Items");
             GlobalDictionaries.masterTileCatalogue = texLoader.loadTilesIntoMemory("Tiles");
             
-            Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Mapping engine engaged...");
+            Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Beginning city generation...");
+
+            this.generateCity(cityName);
         }
 
-        public void generateMap()
+        public void generateCity(string filename)
         {
-            fileParser = new FileParser("NULL", "NULL");
+            fileParser = new FileParser("Cities", filename);
         }
         
 
