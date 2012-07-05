@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace SuperCollider
 {
-    class FileParser
+    public class FileParsingEngine
     {
         private StreamReader streamReader;
         private StringBuilder stringBuilder = new StringBuilder();
@@ -16,7 +16,7 @@ namespace SuperCollider
         private int currentScanningX;
         private int[,] currentMapArray;
 
-        public FileParser(string extension, string filename)
+        public FileParsingEngine(string extension, string filename)
         {
             Debug.WriteLine("Map generation initiated...");
             this.parseFile(generateFilePath(extension, filename));

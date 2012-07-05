@@ -20,7 +20,7 @@ namespace SuperCollider
     {
         #region Miscellaneous
 
-        public static FileParser fileParser;
+        public static FileParsingEngine fileParser;
         public static TextureEngine texLoader;
 
         public static bool debugGameEngine = true;

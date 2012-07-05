@@ -9,7 +9,7 @@ namespace SuperCollider
     {
         public void generateCity(string filename)
         {
-            fileParser = new FileParser("Cities", filename);
+            fileParser = new FileParsingEngine("Cities", filename);
         }
     }
 }
