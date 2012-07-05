@@ -1,14 +1,20 @@
-using Mapping;
+using SuperCollider;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using System.Text;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
-namespace SylvesterCordello
+namespace SuperCollider
 {
     public class MapEngine
     {
@@ -20,26 +26,68 @@ namespace SylvesterCordello
         StreamReader streamReader;
         StringBuilder stringBuilder;
         FileParser fileParser;
+        TextureLoader texLoader;
         
         public Building[,] masterMapArray;
+        public Dictionary<int, Texture2D> masterTileCatalogue;
+        
 
         public bool debugMap = false;
         private Texture2D debugTexture;
 
-        public MapEngine(Texture2D debugTex)
+
+        public MapEngine(ContentManager Content)
         {
-            this.debugTexture = debugTex;
-            Debug.WriteLine("Mapping engine engaged...");
+            this.debugTexture = Content.Load<Texture2D>("debugTex");
+
+            texLoader = new TextureLoader(Content);
+            Debug.WriteLine("Texture engine engaged...");
+            masterItemCatalogue = texLoader.loadItemsIntoMemory("Items");
+            masterTileCatalogue = texLoader.loadTilesIntoMemory("Tiles");
+            
+            Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Mapping engine engaged...");
         }
 
         public void generateMap()
         {
             fileParser = new FileParser("NULL", "NULL");
         }
+        
 
-        public void printMap()
+        public void renderMap(SpriteBatch mapBatch)
         {
-            Debug.WriteLine(masterMapArray[1, 0]);
+            foreach (Tile tile in thisMap)
+            {
+                tile.Draw(mapBatch);
+                if (tile.thisTileItem != null)
+                {
+                    tile.thisTileItem.Draw(mapBatch, tile.tileItemPosition);
+                }
+                if (debugMap)
+                {
+                    mapBatch.Draw(debugTexture, tile.tileItemPosition, Color.Orange);
+                }
+            }
+
+        }
+
+        private void defineFloorTiles()
+        {
+            streamReader = new StreamReader("floorTiles.TXT");
+
+            string line;
+            while ((line = streamReader.ReadLine()) != null)
+            {
+                tilesThatCanBeWalkedOn.Add(Convert.ToInt32(line));
+            }
+        }
+
+        public void LoadTiles(ContentManager Content)
+        {
+        }
+
+        public void LoadItems(ContentManager Content)
+        {
         }
 
         public List<Tile> tileMap(Dictionary<int, Texture2D> tileCatalogue, Dictionary<int, Texture2D> itemCatalogue)
@@ -75,31 +123,11 @@ namespace SylvesterCordello
             return thisMap;
         }
 
-        public void renderMap(SpriteBatch mapBatch)
+        public Dictionary<int, Texture2D> masterItemCatalogue
         {
-            foreach (Tile tile in thisMap)
+            get
             {
-                tile.Draw(mapBatch);
-                if (tile.thisTileItem != null)
-                {
-                    tile.thisTileItem.Draw(mapBatch, tile.tileItemPosition);
-                }
-                if (debugMap)
-                {
-                    mapBatch.Draw(debugTexture, tile.tileItemPosition, Color.Orange);
-                }
-            }
-
-        }
-
-        private void defineFloorTiles()
-        {
-            streamReader = new StreamReader("floorTiles.TXT");
-
-            string line;
-            while ((line = streamReader.ReadLine()) != null)
-            {
-                tilesThatCanBeWalkedOn.Add(Convert.ToInt32(line));
+                return masterItemCatalogue;
             }
         }
     }

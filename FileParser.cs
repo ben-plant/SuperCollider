@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Diagnostics;
 
-namespace Mapping
+namespace SuperCollider
 {
     class FileParser
     {
@@ -14,7 +14,7 @@ namespace Mapping
         private int currentMapHeight;
         private int currentScanningY;
         private int currentScanningX;
-        private int[,] masterMapArray;
+        private int[,] currentMapArray;
 
         public FileParser(string extension, string filename)
         {
@@ -44,7 +44,7 @@ namespace Mapping
                 else if (char.IsSeparator(digit))
                 {
                     string tempStr = stringBuilder.ToString();
-                    masterMapArray[currentScanningX, currentScanningY] = Convert.ToInt32(tempStr);
+                    currentMapArray[currentScanningX, currentScanningY] = Convert.ToInt32(tempStr);
                     stringBuilder.Clear();
                     ++currentScanningX;
                 }
@@ -59,7 +59,7 @@ namespace Mapping
 
             Debug.WriteLine("Current job complete: closing instance.");
             streamReader.Close();
-            return masterMapArray;
+            return currentMapArray;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SuperCollider;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
@@ -12,22 +14,57 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
 
-namespace Mapping
+namespace SuperCollider
 {
     public class Item
     {
-        public int itemIndex;
-        private Texture2D itemTexture;
+        private readonly Vector2 itemSize = new Vector2(24, 24);
 
-        public Item(int itemNo, Dictionary<int, Texture2D> itemCatalogue)
+        public Texture2D itemTexture
         {
-            this.itemIndex = itemNo;
-            this.itemTexture = itemCatalogue[itemIndex];
+            get
+            {
+                return itemTexture;
+            }
+            set
+            {
+                itemTexture = value;
+            }
+        }
+
+        public int itemIndex
+        {
+            get
+            {
+                return itemIndex;
+            }
+            set
+            {
+                itemIndex = value;
+            }
+        }
+
+        public Vector2 itemPlacement
+        {
+            get
+            {
+                return itemPlacement;
+            }
+            set
+            {
+                itemPlacement = value;
+            }
+        }
+
+        public Item(Vector2 itemPlacement, int itemID)
+        {
+            this.itemIndex = itemID;
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Rectangle tileDrawPosition)
         {
-            spriteBatch.Draw(itemTexture, tileDrawPosition, Color.White);
+            spriteBatch.Draw(itemTexture, new Rectangle((int)itemPlacement.X, (int)itemPlacement.Y, (int)itemSize.X, (int)itemSize.Y), Color.White);
         }
     }
 }

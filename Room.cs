@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Mapping;
+using SuperCollider;
 
-namespace Mapping
+namespace SuperCollider
 {
     class Room
     {
