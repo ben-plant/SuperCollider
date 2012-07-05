@@ -16,16 +16,22 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SuperCollider
 {
-    public class TextureLoader
+    public class TextureEngine
     {
         ContentManager Content;
         
-
-        public TextureLoader(ContentManager contentMan)
+        public TextureEngine(ContentManager contentMan)
         {
             this.Content = contentMan;
+
+            if (GlobalDictionaries.debugGameEngine)
+            {
+                GlobalDictionaries.debugTexture = Content.Load<Texture2D>("debugTex");
+                Debug.WriteLine("Debugging texture loaded successfully...");
+            }
         }
 
+        //These could do with some work...
         public Dictionary<int, Texture2D> loadTilesIntoMemory(string dirName)
         {
             DirectoryInfo dir = new DirectoryInfo(Content.RootDirectory + "\\" + dirName);

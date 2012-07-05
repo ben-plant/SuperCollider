@@ -18,15 +18,12 @@ namespace SuperCollider
         public Rectangle tilePosition;
         public Rectangle tileItemPosition;
         public Texture2D tileTexture;
+        public bool tileCanBeWalkedOn;
         public Item thisTileItem = null;
 
-        public Dictionary<int, Texture2D> itemCatalogue;
-
-        public Tile(Rectangle tilePos, int tileTextureID, Dictionary<int, Texture2D> tileCat, Dictionary<int, Texture2D> itemCat)
+        public Tile(Rectangle tilePos, int tileTextureID, bool? canTileBeWalkedOn)
         {
             this.tilePosition = tilePos;
-            this.tileTexture = tileCat[tileTextureID];
-            this.itemCatalogue = itemCat;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -36,7 +33,7 @@ namespace SuperCollider
 
         public void addItemToTile(int itemNumber)
         {
-            this.thisTileItem = new Item(itemNumber, itemCatalogue);
+            this.thisTileItem = new Item(itemNumber);
         }
     }
 }

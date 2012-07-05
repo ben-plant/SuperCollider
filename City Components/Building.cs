@@ -26,6 +26,8 @@ namespace SuperCollider
         public List<Rectangle> floorTilesInMap = new List<Rectangle>();
         private Texture2D debugTexture;
 
+        public Room[,] thisBuildingRooms;
+
         public int[,] masterMapArray;
         public Tile[,] masterTiledMapArray;
 
