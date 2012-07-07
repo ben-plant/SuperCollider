@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace SuperCollider.Engines
 {
-    class RenderingEngine
+    public class RenderingEngine
     {
         SpriteBatch spriteBatch;
 

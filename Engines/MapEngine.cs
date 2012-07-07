@@ -9,6 +9,8 @@ using SuperCollider.CityComponents;
 
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace SuperCollider.Engines
 {
@@ -19,17 +21,20 @@ namespace SuperCollider.Engines
          * designated by this class.
          */
 
-        public MapEngine(ContentManager Content, string cityName)
+        public MapEngine(ContentManager Content, SpriteBatch spriteBatch, string cityName)
         {
             Debug.WriteLine("SuperCollider Game Engine - (C) Benjamin Plant 2012" + "\n" + "SuperCollider online...");
 
+            Debug.WriteLine("Loading global objects...");
             GlobalDictionaries.texLoader = new TextureEngine(Content);
+            GlobalDictionaries.engineSpriteBatch = spriteBatch;
+
             Debug.WriteLine("Texture engine engaged...");
             GlobalDictionaries.masterItemCatalogue = GlobalDictionaries.texLoader.loadItemsIntoMemory("Items");
             GlobalDictionaries.masterTileCatalogue = GlobalDictionaries.texLoader.loadTilesIntoMemory("Tiles");
             
             Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Beginning city generation...");
-            GlobalDictionaries.mainCity = new City();
+            GlobalDictionaries.mainCity = new City(cityName);
         }
     }
 }

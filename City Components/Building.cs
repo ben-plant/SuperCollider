@@ -43,8 +43,6 @@ namespace SuperCollider.CityComponents
         int currentMapY = 0; //Iterates left to right
         //This sort of makes sense, right?
 
-        public bool debugMap = false;
-
         public Building(int mapID, int X, int Y)
         {
             this.masterMapID = mapID;

@@ -23,7 +23,7 @@ namespace SuperCollider
     {
         #region Miscellaneous
 
-        public static FileParsingEngine fileParser;
+        public static FileParsingEngine fileParser = new FileParsingEngine();
         public static TextureEngine texLoader;
         public static RenderingEngine renderEngine;
 
@@ -130,6 +130,21 @@ namespace SuperCollider
             }
         }
 
+        #endregion
+
+        #region Rendering
+
+        public static SpriteBatch engineSpriteBatch
+        {
+            get
+            {
+                return engineSpriteBatch;
+            }
+            set
+            {
+                engineSpriteBatch = value;
+            }
+        }
         #endregion
     }
 }

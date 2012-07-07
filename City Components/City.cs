@@ -22,9 +22,12 @@ namespace SuperCollider.CityComponents
 {
     public class City
     {
-        public void generateCity(string filename)
+        private int[,] currentCityMapArray;
+
+        public City(string filename)
         {
-            fileParser = new FileParsingEngine("Cities", filename);
+            Debug.WriteLine("Parsing file " + filename);
+            currentCityMapArray = (GlobalDictionaries.fileParser.parseFile("Cities", filename));
         }
     }
 }

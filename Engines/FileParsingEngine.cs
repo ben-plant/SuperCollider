@@ -14,13 +14,11 @@ namespace SuperCollider.Engines
         private int currentMapHeight;
         private int currentScanningY;
         private int currentScanningX;
-        private Vector2 
         private int[,] currentMapArray;
 
-        public FileParsingEngine(string extension, string filename)
+        public FileParsingEngine()
         {
-            Debug.WriteLine("Map generation initiated...");
-
+            Debug.WriteLine("File parser loaded...");
         }
 
         public string generateFilePath(string extension, string filename)
@@ -32,7 +30,7 @@ namespace SuperCollider.Engines
         {
             string file = stringBuilder.Append(extension + "//" + filename).ToString();
             streamReader = new StreamReader(file);
-            Debug.WriteLine("Loaded {0} into memory and scanning..." + file);
+            Debug.WriteLine("Loaded {0} into memory and scanning..." + filename);
 
             int linesInFile = 0;
             string line = streamReader.ReadToEnd();
