@@ -30,7 +30,7 @@ namespace SuperCollider.Sprites.NonPlayable
                                 SHOT     = 50, 
                                 BLUDGEON = 30 };
 
-        public NPC(string spriteName, Vector2 spawnPoint, Texture2D assetTexture, Texture2D debugTexture, List<Rectangle> boundsTiles, bool hostility) : base(spriteName, spawnPoint, assetTexture, debugTexture, boundsTiles)
+        public NPC(string spriteName, Vector2 spawnPoint, Texture2D assetTexture, List<Rectangle> boundsTiles, bool hostility) : base(spriteName, spawnPoint, assetTexture, GlobalDictionaries.debugTexture, boundsTiles)
         {
             this.spriteFacingDirection = 2;
             this.hitBox = new Rectangle(this.spriteBoundsBox.X + 8, this.spriteBoundsBox.Y + 8, 16, 16);

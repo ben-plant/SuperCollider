@@ -1,33 +1,25 @@
-﻿using SuperCollider;
-using SuperCollider.Engines;
-using SuperCollider.Objects;
-using SuperCollider.CityComponents;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
+using System.Collections.Generic;
+
+using SuperCollider.Engines;
+using SuperCollider.CityComponents;
+using SuperCollider.Sprites.NonPlayable;
 
 namespace SuperCollider
 {
     public static class GlobalDictionaries
     {
+        public static bool debugGameEngine = true;
+
         #region Miscellaneous
+
+        public static List<Sprite> masterSpriteCatalogue = new List<Sprite>();
 
         public static FileParsingEngine fileParser = new FileParsingEngine();
         public static TextureEngine texLoader;
         public static RenderingEngine renderEngine;
 
-        public static bool debugGameEngine = true;
         public static int itemsOnMap = 0;
 
         public static City mainCity

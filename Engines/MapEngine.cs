@@ -17,7 +17,7 @@ namespace SuperCollider.Engines
     public class MapEngine
     {
         /* Manages the map as a whole, spawning and initializing buildings according to a master plan.
-         * Each building then spawns its own Room() groups according to its own text file, which it is
+         * Each building then spawns its own Room() groups according to its own XML file(?), which it is
          * designated by this class.
          */
 
@@ -33,7 +33,7 @@ namespace SuperCollider.Engines
             GlobalDictionaries.masterItemCatalogue = GlobalDictionaries.texLoader.loadItemsIntoMemory("Items");
             GlobalDictionaries.masterTileCatalogue = GlobalDictionaries.texLoader.loadTilesIntoMemory("Tiles");
             
-            Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Beginning city generation...");
+            Debug.WriteLine("Tiles and items loaded successfully." + "/n" + "Beginning generation of " + cityName + ".");
             GlobalDictionaries.mainCity = new City(cityName);
         }
     }
