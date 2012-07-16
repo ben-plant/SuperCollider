@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:element name ="Building" type="buildingType"/>
+
+  <xs:complexType name ="buildingType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name ="Room" type ="roomType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="roomType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name ="Name" type="xs:string"/>
+      <xs:element name ="Height" type="xs:integer"/>
+      <xs:element name ="Width" type="xs:integer"/>
+      <xs:element name ="PositionX" type="xs:integer"/>
+      <xs:element name ="PositionY" type="xs:integer"/>
+      <xs:element name ="BasicFeatures" type="basicFeatures"/>
+      <xs:element name ="ExtraFeatures" type="extraFeatures"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name ="basicFeatures">
+    <xs:sequence>
+      <xs:element name ="Door" type ="doorType"/>
+      <xs:element name ="Window" type ="windowType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name ="extraFeatures">
+    <xs:sequence>
+      <xs:element name ="Desk" type ="deskType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name ="doorType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name ="positionX" type="xs:integer"/>
+      <xs:element name ="positionY" type="xs:integer"/>
+      <xs:element name ="direction" type="xs:byte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name ="windowType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name ="positionX" type="xs:integer"/>
+      <xs:element name ="positionY" type="xs:integer"/>
+      <xs:element name ="direction" type="xs:byte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name ="deskType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:element name ="positionX" type="xs:integer"/>
+      <xs:element name ="positionY" type="xs:integer"/>
+      <xs:element name ="tilesX" type="xs:integer"/>
+      <xs:element name ="tilesY" type="xs:integer"/>
+      <xs:element name ="direction" type="xs:byte"/>
+      <xs:element name ="posOfCompX" type="xs:integer"/>
+      <xs:element name ="posOfCompY" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+</xs:schema>
