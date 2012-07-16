@@ -35,12 +35,12 @@ namespace SuperCollider.Objects
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(tileTexture, tilePosition, Color.White);
+            spriteBatch.Draw(tileTexture, tilePosition, Color.White);
         }
 
-        //public void addItemToTile(int itemNumber)
-        //{
-        //    this.thisTileItem = new Item(itemNumber);
-        //}
+        public void addItemToTile(int itemNumber)
+        {
+            this.thisTileItem = new Item(itemNumber);
+        }
     }
 }
